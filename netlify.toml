@@ -1,0 +1,6 @@
+[build]
+  command = "ng build"
+  publish = "dist/Radar/browser"
+
+[[plugins]]
+  package = "@netlify/angular-runtime"

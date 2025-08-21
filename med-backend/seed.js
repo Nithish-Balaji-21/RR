@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 // Connect to MongoDB
 async function connectDB() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/medicineDB');
+    await mongoose.connect('mongodb+srv://Nithish:Nithish21@remedy-radar.6je5hia.mongodb.net/?retryWrites=true&w=majority&appName=Remedy-Radar');
     console.log('Connected to MedicineDB');
   } catch (error) {
     console.error('MongoDB connection error:', error);

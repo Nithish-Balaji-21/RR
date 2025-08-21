@@ -1,0 +1,118 @@
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">Medicines</h1>
+        <p class="text-gray-600">
+          Browse our range of over-the-counter medicines.
+        </p>
+      </div>
+
+      <!-- Personalized Recommendations -->
+      <div *ngIf="(currentUser$ | async) && personalizedRecommendations.length > 0" class="mb-8">
+        <h2 class="text-xl font-semibold mb-4 text-medical-600">
+          Recommended for You
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <mat-card *ngFor="let medicine of personalizedRecommendations; trackBy: trackByMedicineId"
+                    class="medicine-card recommended">
+            <div class="h-40 bg-white flex items-center justify-center p-4 overflow-hidden">
+              <img [src]="medicine.image" [alt]="medicine.name" 
+                   class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                   onerror="this.src='assets/images/placeholder.svg'; this.onerror=null;"/>
+            </div>
+            <mat-card-content class="p-4">
+              <div class="bg-medical-100 text-medical-800 text-xs font-semibold inline-block px-2 py-1 rounded mb-2">
+                Recommended
+              </div>
+              <mat-card-title class="font-medium text-lg mb-1">{{medicine.name}}</mat-card-title>
+              <p class="text-sm text-gray-600 mb-2">{{medicine.description}}</p>
+              <p class="text-sm text-gray-600 mb-4">Dosage: {{medicine.dosage}}</p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-medical-600">{{formatPrice(medicine.price)}}</span>
+                <button mat-raised-button color="primary" (click)="addToCart(medicine)">
+                  Add to Cart
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="flex flex-col md:flex-row gap-4 mb-8">
+        <mat-form-field class="flex-grow">
+          <mat-label>Search medicines...</mat-label>
+          <input matInput [(ngModel)]="searchTerm" (input)="onSearchChange()" />
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+        <div class="flex items-center gap-2">
+          <mat-icon class="text-gray-500">filter_alt</mat-icon>
+          <span class="text-sm text-gray-600">Filter by category:</span>
+        </div>
+      </div>
+
+      <!-- Medicine Tabs -->
+      <mat-tab-group>
+        <!-- All Medicines -->
+        <mat-tab label="All">
+          <div class="pt-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <mat-card *ngFor="let medicine of filteredMedicines; trackBy: trackByMedicineId"
+                        class="medicine-card">
+                <div class="h-40 bg-white flex items-center justify-center p-4 overflow-hidden">
+                  <img [src]="medicine.image" [alt]="medicine.name" 
+                       class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                       onerror="this.src='assets/images/placeholder.svg'; this.onerror=null;"/>
+                </div>
+                <mat-card-content class="p-4">
+                  <mat-card-title class="font-medium text-lg mb-1">{{medicine.name}}</mat-card-title>
+                  <p class="text-sm text-gray-600 mb-2">{{medicine.description}}</p>
+                  <p class="text-sm text-gray-600 mb-4">Dosage: {{medicine.dosage}}</p>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-medical-600">{{formatPrice(medicine.price)}}</span>
+                    <button mat-raised-button color="primary" (click)="addToCart(medicine)">
+                      Add to Cart
+                    </button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            
+            <div *ngIf="filteredMedicines.length === 0" class="text-center py-10">
+              <p class="text-gray-500">No medicines found matching your search.</p>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!-- Category Tabs -->
+        <mat-tab *ngFor="let category of categories; trackBy: trackByCategoryId" 
+                 [label]="getCategoryDisplayName(category)">
+          <div class="pt-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <mat-card *ngFor="let medicine of getMedicinesByCategory(category); trackBy: trackByMedicineId"
+                        class="medicine-card">
+                <div class="h-40 bg-white flex items-center justify-center p-4 overflow-hidden">
+                  <img [src]="medicine.image" [alt]="medicine.name" 
+                       class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                       onerror="this.src='assets/images/placeholder.svg'; this.onerror=null;"/>
+                </div>
+                <mat-card-content class="p-4">
+                  <mat-card-title class="font-medium text-lg mb-1">{{medicine.name}}</mat-card-title>
+                  <p class="text-sm text-gray-600 mb-2">{{medicine.description}}</p>
+                  <p class="text-sm text-gray-600 mb-4">Dosage: {{medicine.dosage}}</p>
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-medical-600">{{formatPrice(medicine.price)}}</span>
+                    <button mat-raised-button color="primary" (click)="addToCart(medicine)">
+                      Add to Cart
+                    </button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            
+            <div *ngIf="getMedicinesByCategory(category).length === 0" class="text-center py-10">
+              <p class="text-gray-500">No medicines found in this category matching your search.</p>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>

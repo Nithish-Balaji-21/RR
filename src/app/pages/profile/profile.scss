@@ -1,0 +1,48 @@
+
+    .max-w-4xl { max-width: 56rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    
+    .text-3xl { font-size: 1.875rem; }
+    .font-bold { font-weight: bold; }
+    .text-gray-500 { color: #6b7280; }
+    .text-gray-600 { color: #4b5563; }
+    .text-medical-600 { color: #0284c7; }
+    
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gap-4 { gap: 1rem; }
+    .gap-8 { gap: 2rem; }
+    
+    .bg-medical-600 { background-color: #0284c7; }
+    .text-white { color: white; }
+    
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    
+    .text-center { text-align: center; }
+    
+    .h-24 { height: 6rem; }
+    
+    @media (min-width: 640px) {
+      .sm\\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+    
+    @media (min-width: 768px) {
+      .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+    }

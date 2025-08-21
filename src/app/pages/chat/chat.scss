@@ -1,0 +1,86 @@
+ .max-w-4xl { max-width: 56rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .p-4 { padding: 1rem; }
+    .p-3 { padding: 0.75rem; }
+    
+    .h-10 { height: 2.5rem; }
+    .w-10 { width: 2.5rem; }
+    .w-2 { width: 0.5rem; }
+    .h-2 { height: 0.5rem; }
+    
+    .mr-3 { margin-right: 0.75rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-start { justify-content: flex-start; }
+    .justify-end { justify-content: flex-end; }
+    
+    .bg-medical-50 { background-color: #f0f9ff; }
+    .bg-medical-100 { background-color: #e0f2fe; }
+    .bg-medical-600 { background-color: #0284c7; }
+    .bg-white { background: white; }
+    .bg-gray-50 { background-color: #f9fafb; }
+    .bg-gray-400 { background-color: #9ca3af; }
+    
+    .text-white { color: white; }
+    .text-gray-500 { color: #6b7280; }
+    .text-gray-600 { color: #4b5563; }
+    .text-medical-100 { color: #e0f2fe; }
+    
+    .font-semibold { font-weight: 600; }
+    .text-sm { font-size: 0.875rem; }
+    .text-xs { font-size: 0.75rem; }
+    .text-lg { font-size: 1.125rem; }
+    
+    .border-b { border-bottom-width: 1px; }
+    .border-t { border-top-width: 1px; }
+    .border { border-width: 1px; }
+    .border-gray-200 { border-color: #e5e7eb; }
+    
+    .rounded-full { border-radius: 9999px; }
+    .rounded-lg { border-radius: 0.5rem; }
+    
+    .overflow-hidden { overflow: hidden; }
+    .overflow-y-auto { overflow-y: auto; }
+    
+    .\h-\[60vh\] {
+  height: 60vh;
+}
+
+    
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-x-1 > * + * { margin-left: 0.25rem; }
+    .space-x-2 > * + * { margin-left: 0.5rem; }
+    
+    .\max-w-\[75\%\] {
+  max-width: 75%;
+}
+
+    
+    .flex-grow { flex-grow: 1; }
+    
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: .5;
+      }
+    }
+    
+    @media (min-width: 640px) {
+      .sm\\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+    }

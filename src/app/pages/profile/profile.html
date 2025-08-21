@@ -1,0 +1,113 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div *ngIf="currentUser$ | async as user">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold mb-2">Profile</h1>
+          <p class="text-gray-600">Manage your account and preferences</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- User Information -->
+          <mat-card>
+            <mat-card-header>
+              <div mat-card-avatar class="bg-medical-600 text-white flex items-center justify-center">
+                <mat-icon>person</mat-icon>
+              </div>
+              <mat-card-title>{{user.name}}</mat-card-title>
+              <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item>
+                  <mat-icon matListItemIcon>badge</mat-icon>
+                  <div matListItemTitle>Role</div>
+                  <div matListItemLine>{{user.role | titlecase}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <mat-icon matListItemIcon>email</mat-icon>
+                  <div matListItemTitle>Email</div>
+                  <div matListItemLine>{{user.email}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <mat-icon matListItemIcon>calendar_today</mat-icon>
+                  <div matListItemTitle>Member Since</div>
+                  <div matListItemLine>January 2025</div>
+                </mat-list-item>
+              </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">
+                <mat-icon class="mr-2">edit</mat-icon>
+                Edit Profile
+              </button>
+            </mat-card-actions>
+          </mat-card>
+
+          <!-- Medical History -->
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Medical History</mat-card-title>
+              <mat-card-subtitle>Your recorded medical conditions</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div *ngIf="user.medicalHistory && user.medicalHistory.length > 0; else noHistory">
+                <mat-list>
+                  <mat-list-item *ngFor="let condition of user.medicalHistory; let last = last">
+                    <mat-icon matListItemIcon class="text-medical-600">medical_services</mat-icon>
+                    <div matListItemTitle>{{condition}}</div>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+              <ng-template #noHistory>
+                <p class="text-gray-500 text-center py-4">
+                  No medical history recorded
+                </p>
+              </ng-template>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">
+                <mat-icon class="mr-2">add</mat-icon>
+                Add Condition
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <!-- Quick Actions -->
+        <mat-card class="mt-8">
+          <mat-card-header>
+            <mat-card-title>Quick Actions</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <button mat-stroked-button class="h-24 flex flex-col items-center justify-center" (click)="navigateToSymptoms()">
+                <mat-icon class="mb-2 text-medical-600">search</mat-icon>
+                <span>Check Symptoms</span>
+              </button>
+              <button mat-stroked-button class="h-24 flex flex-col items-center justify-center" (click)="navigateToMedicines()">
+                <mat-icon class="mb-2 text-medical-600">medication</mat-icon>
+                <span>Browse Medicines</span>
+              </button>
+              <button mat-stroked-button class="h-24 flex flex-col items-center justify-center" (click)="navigateToChat()">
+                <mat-icon class="mb-2 text-medical-600">chat</mat-icon>
+                <span>Chat with Doctor</span>
+              </button>
+              <button mat-stroked-button class="h-24 flex flex-col items-center justify-center" (click)="navigateToCart()">
+                <mat-icon class="mb-2 text-medical-600">shopping_cart</mat-icon>
+                <span>View Cart</span>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Account Actions -->
+        <div class="mt-8 text-center">
+          <button mat-raised-button color="warn" (click)="logout()">
+            <mat-icon class="mr-2">logout</mat-icon>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,113 @@
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">Symptom Checker</h1>
+        <p class="text-gray-600">
+          Select your symptoms below to get personalized medicine recommendations.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Symptoms Selection -->
+        <div class="lg:col-span-1">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Select Your Symptoms</mat-card-title>
+              <mat-card-subtitle>Check all that apply</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="space-y-4">
+                <div *ngFor="let symptom of symptoms; trackBy: trackBySymptomId" 
+                     class="flex items-start space-x-3">
+                  <mat-checkbox 
+                    [(ngModel)]="symptom.selected"
+                    (change)="onSymptomToggle(symptom.id, $event.checked)"
+                  ></mat-checkbox>
+                  <div class="grid gap-1.5 leading-none">
+                    <label class="text-sm font-medium cursor-pointer" 
+                           (click)="toggleSymptom(symptom)">
+                      {{symptom.name}}
+                    </label>
+                    <p class="text-sm text-muted-foreground">
+                      {{symptom.description}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions class="flex justify-between">
+              <button mat-stroked-button (click)="clearSelection()">
+                Clear
+              </button>
+              <button mat-raised-button color="primary" (click)="checkSymptoms()">
+                Check Symptoms
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        
+        <!-- Recommendations -->
+        <div class="lg:col-span-2">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Recommended Medicines</mat-card-title>
+              <mat-card-subtitle>
+                <span *ngIf="hasCheckedSymptoms; else initialMessage">
+                  Based on your symptoms, we recommend the following medicines.
+                </span>
+                <ng-template #initialMessage>
+                  Select your symptoms and click "Check Symptoms" to get recommendations.
+                </ng-template>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <!-- Initial State -->
+              <div *ngIf="!hasCheckedSymptoms" class="text-center py-8 text-gray-500">
+                Your medicine recommendations will appear here
+              </div>
+              
+              <!-- No Results -->
+              <div *ngIf="hasCheckedSymptoms && recommendedMedicines.length === 0" 
+                   class="text-center py-8 text-gray-500">
+                No specific medicines found for your symptoms. Please consult a doctor.
+              </div>
+              
+              <!-- Recommendations List -->
+              <div *ngIf="recommendedMedicines.length > 0" class="space-y-4">
+                <div *ngFor="let medicine of recommendedMedicines; trackBy: trackByMedicineId" 
+                     class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg border border-gray-200">
+                  <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                    <div class="w-16 h-16 bg-gray-100 rounded-md flex items-center justify-center">
+                      <mat-icon class="text-gray-500">medication</mat-icon>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">{{medicine.name}}</h3>
+                      <p class="text-sm text-gray-600">{{medicine.description}}</p>
+                      <p class="text-sm text-gray-600">Dosage: {{medicine.dosage}}</p>
+                      <p class="font-medium text-medical-600 mt-1">{{formatPrice(medicine.price)}}</p>
+                    </div>
+                  </div>
+                  <button 
+                    mat-raised-button 
+                    color="primary"
+                    class="w-full sm:w-auto" 
+                    (click)="addToCart(medicine)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions *ngIf="recommendedMedicines.length > 0">
+              <button 
+                mat-raised-button 
+                color="primary"
+                class="w-full" 
+                (click)="viewCart()"
+              >
+                View Cart
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>

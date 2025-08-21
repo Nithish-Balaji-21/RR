@@ -1,0 +1,25 @@
+ .max-w-7xl { max-width: 80rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .w-full { width: 100%; }
+    .flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .items-center { align-items: center; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .mr-1 { margin-right: 0.25rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .text-xl { font-size: 1.25rem; }
+    .font-bold { font-weight: bold; }
+    .text-white { color: white; }
+    .hidden { display: none; }
+    .space-x-1 > * + * { margin-left: 0.25rem; }
+    .space-x-2 > * + * { margin-left: 0.5rem; }
+    .shadow-md { 
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+    }
+    .bg-gradient-medical {
+      background: linear-gradient(to right, #0284c7, #075985);
+    }
+    
+    @media (min-width: 768px) {
+      .md\\:flex { display: flex; }
+    }

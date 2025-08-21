@@ -12,7 +12,7 @@ app.use(express.json());
 const JWT_SECRET = 'your-secret-key-change-in-production';
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/medicineDB', {
+mongoose.connect('mongodb+srv://Nithish:Nithish21@remedy-radar.6je5hia.mongodb.net/?retryWrites=true&w=majority&appName=Remedy-Radar', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log("MongoDB Connected to MedicineDB"))

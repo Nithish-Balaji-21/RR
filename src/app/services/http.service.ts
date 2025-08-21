@@ -10,8 +10,8 @@ export interface HttpOptions {
   providedIn: 'root'
 })
 export class HttpService {
-  private baseURL = 'http://localhost:5000/api';
-  
+ // private baseURL = 'http://localhost:5000/api';
+  private baseURL ='https://remedy-radar.onrender.com/api';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object

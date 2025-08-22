@@ -47,7 +47,6 @@ import { AuthService } from '../../services/auth.service';
                       matInput 
                       type="email"
                       formControlName="email"
-                      placeholder="johndoe@example.com"
                     />
                     <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
                       Email is required
@@ -63,7 +62,6 @@ import { AuthService } from '../../services/auth.service';
                       matInput 
                       type="password"
                       formControlName="password"
-                      placeholder="********"
                     />
                     <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
                       Password is required
@@ -85,15 +83,6 @@ import { AuthService } from '../../services/auth.service';
                   </button>
                 </form>
               </mat-card-content>
-              <mat-card-footer class="flex flex-col items-center justify-center space-y-2 p-4">
-                <div class="text-sm text-gray-500">
-                  <span>Demo credentials: </span>
-                  <br />
-                  <span class="font-medium">User: user@example.com / password123</span>
-                  <br />
-                  <span class="font-medium">Admin: admin@example.com / admin123</span>
-                </div>
-              </mat-card-footer>
             </mat-card>
           </div>
         </mat-tab>
@@ -114,7 +103,6 @@ import { AuthService } from '../../services/auth.service';
                     <input 
                       matInput 
                       formControlName="name"
-                      placeholder="John Doe"
                     />
                     <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
                       Name is required
@@ -130,7 +118,6 @@ import { AuthService } from '../../services/auth.service';
                       matInput 
                       type="email"
                       formControlName="email"
-                      placeholder="johndoe@example.com"
                     />
                     <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
                       Email is required
@@ -146,7 +133,6 @@ import { AuthService } from '../../services/auth.service';
                       matInput 
                       type="password"
                       formControlName="password"
-                      placeholder="********"
                     />
                     <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
                       Password is required
@@ -162,7 +148,6 @@ import { AuthService } from '../../services/auth.service';
                       matInput 
                       type="password"
                       formControlName="confirmPassword"
-                      placeholder="********"
                     />
                     <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
                       Please confirm your password

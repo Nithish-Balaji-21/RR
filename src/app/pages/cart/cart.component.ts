@@ -129,8 +129,10 @@ import { Observable } from 'rxjs';
                     color="primary"
                     class="w-full" 
                     (click)="checkout()"
+                    [disabled]="isCheckingOut"
                   >
-                    Checkout
+                    <span *ngIf="!isCheckingOut">Checkout</span>
+                    <span *ngIf="isCheckingOut">Processing Order...</span>
                   </button>
                 </div>
               </div>
@@ -223,6 +225,7 @@ export class CartComponent implements OnInit {
   cartItems$: Observable<CartItem[]>;
   address = '';
   medicine: any;
+  isCheckingOut = false;
 
   constructor(
     private cartService: CartService,
@@ -255,7 +258,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  checkout(): void {
+  async checkout(): Promise<void> {
     if (!this.address.trim()) {
       this.snackBar.open('Please enter your delivery address.', 'Close', {
         duration: 3000,
@@ -263,13 +266,21 @@ export class CartComponent implements OnInit {
       return;
     }
 
-    // In a real app, this would trigger a payment flow and order creation
-    this.snackBar.open('Order placed! Your medicines will arrive within 30 minutes.', 'Close', {
-      duration: 5000,
-    });
-
-    this.cartService.clearCart();
-    this.address = '';
+    this.isCheckingOut = true;
+    
+    try {
+      const success = await this.cartService.checkout(this.address);
+      if (success) {
+        this.address = '';
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      this.snackBar.open('Checkout failed. Please try again.', 'Close', {
+        duration: 3000,
+      });
+    } finally {
+      this.isCheckingOut = false;
+    }
   }
 
   getTotalPrice(): number {

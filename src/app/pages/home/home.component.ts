@@ -36,15 +36,15 @@ import { Medicine } from '../../models/medicine.model';
               <button 
                 mat-raised-button 
                 routerLink="/symptoms" 
-                class="bg-white text-medical-700 hover:bg-gray-100"
+                class="bg-medical-700 text-white hover:bg-medical-800 px-6 py-3 font-semibold shadow-lg"
               >
                 Check Symptoms
                 <mat-icon class="ml-2">arrow_forward</mat-icon>
               </button>
               <button 
-                mat-stroked-button 
+                mat-raised-button 
                 routerLink="/medicines" 
-                class="border-white text-white hover:bg-medical-700"
+                class="bg-medical-700 text-white hover:bg-medical-800 px-6 py-3 font-semibold shadow-lg"
               >
                 Browse Medicines
               </button>
@@ -103,7 +103,7 @@ import { Medicine } from '../../models/medicine.model';
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center mb-8">
           <h2 class="text-3xl font-bold">Popular Medicines</h2>
-          <button mat-stroked-button routerLink="/medicines">
+          <button mat-raised-button class="bg-medical-600 text-white hover:bg-medical-700" routerLink="/medicines">
             View All
             <mat-icon class="ml-2">arrow_forward</mat-icon>
           </button>
@@ -155,7 +155,7 @@ import { Medicine } from '../../models/medicine.model';
         <button 
           mat-raised-button 
           routerLink="/symptoms" 
-          class="bg-white text-medical-700 hover:bg-gray-100"
+          class="bg-medical-700 text-white hover:bg-medical-800 px-6 py-3 font-semibold shadow-lg"
         >
           Get Started Now
         </button>
@@ -168,6 +168,8 @@ import { Medicine } from '../../models/medicine.model';
       background: linear-gradient(to right, #0284c7, #075985);
     }
     .bg-medical-600 { background-color: #0284c7; }
+    .bg-medical-700 { background-color: #0369a1; }
+    .bg-medical-800 { background-color: #075985; }
     .bg-medical-100 { background-color: #e0f2fe; }
     .text-medical-600 { color: #0284c7; }
     .text-medical-700 { color: #0369a1; }
@@ -176,6 +178,8 @@ import { Medicine } from '../../models/medicine.model';
     .max-w-2xl { max-width: 42rem; }
     .mx-auto { margin-left: auto; margin-right: auto; }
     .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
     .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
     .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
     .p-4 { padding: 1rem; }
@@ -214,6 +218,7 @@ import { Medicine } from '../../models/medicine.model';
     .bg-gray-50 { background-color: #f9fafb; }
     .bg-gray-200 { background-color: #e5e7eb; }
     .border-white { border-color: white; }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
     
     .h-48 { height: 12rem; }
     .w-full { width: 100%; }

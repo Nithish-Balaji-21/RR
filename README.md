@@ -1,64 +1,98 @@
-# Radar
+# 🩺 Remedy Radar
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+Remedy Radar is an intelligent health assistant built with Angular. It helps users understand their symptoms, get instant medicine recommendations, and find answers to their health queries through an integrated chatbot.
 
-## Development server
+### ✨ [Remedy Radar](https://remedy-radar.netlify.app/)
 
-To start a local development server, run:
+-----
 
-```bash
-ng serve
-```
+## 📖 About The Project
 
-##  Live Demo
+Getting quick and reliable health information can be difficult. **Remedy Radar** addresses this by providing an intuitive platform where users can input their symptoms and receive immediate, data-driven suggestions for over-the-counter medications. The application also features a helpful chatbot to answer general health-related questions, acting as a first point of contact for minor health concerns.
 
-The application is live here:  
- [Remedy Radar](https://remedy-radar.netlify.app/)
+**Key Features:**
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+  * **Symptom Checker:** An easy-to-use interface for users to report their symptoms.
+  * **Medicine Recommendation:** Instantly suggests potential medications based on the symptoms provided.
+  * **Integrated Chatbot:** A conversational AI to assist users with their health questions.
+  * **Responsive Design:** A clean and accessible user experience on both desktop and mobile devices.
 
-## Code scaffolding
+-----
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠️ Built With
 
-```bash
-ng generate component component-name
-```
+  * **Frontend:** [Angular](https://angular.io/)
+  * **Backend:** [Node.js](https://nodejs.org/) with [Express.js](https://expressjs.com/)
+  * **Database:** [MongoDB](https://www.mongodb.com/)
+  * **Deployment:** [Netlify](https://www.netlify.com/) (Frontend)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+-----
 
-```bash
-ng generate --help
-```
+## 🚀 Getting Started
 
-## Building
+To get a local copy up and running, follow these simple steps.
 
-To build the project run:
+### Prerequisites
 
-```bash
-ng build
-```
+Make sure you have the following software installed on your machine:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+  * [Node.js](https://nodejs.org/en/download/) (which includes npm)
+  * [Angular CLI](https://angular.dev/tools/cli) (`npm install -g @angular/cli`)
+  * [Git](https://git-scm.com/downloads)
 
-## Running unit tests
+### Installation & Setup
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1.  **Clone the Repository**
 
-```bash
-ng test
-```
+    ```sh
+    git clone https://github.com/Nithish-Balaji-21/RR.git
+    cd RR
+    ```
 
-## Running end-to-end tests
+2.  **Setup the Backend**
+    In your terminal, navigate to the `backend` folder, install dependencies, and run the server.
 
-For end-to-end (e2e) testing, run:
+    ```sh
+    # Navigate into the backend directory
+    cd backend
 
-```bash
-ng e2e
-```
+    # Install backend dependencies
+    npm install
+    ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+    Next, create a **`.env`** file in the `backend` directory and add your environment variables.
 
-## Additional Resources
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_secret_key_for_tokens
+    ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    Finally, start the backend server. Keep this terminal open.
+
+    ```sh
+    # Run the server
+    npm start
+    ```
+
+    The backend will now be running, typically on `http://localhost:5000`.
+
+3.  **Setup the Frontend**
+    Open a **new terminal window** and navigate to the `frontend` folder to set it up.
+
+    ```sh
+    # Navigate to the frontend directory from the root
+    cd frontend 
+    # Note: If your frontend is in the root, just 'cd ..' from the backend folder.
+
+    # Install frontend dependencies
+    npm install
+    ```
+
+    Now, run the Angular development server.
+
+    ```sh
+    # Serve the Angular app
+    ng serve
+    ```
+
+    Open your browser and navigate to `http://localhost:4200/`. The app will be running and connected to your local backend.
